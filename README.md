@@ -5,7 +5,7 @@ Forked in 2015 and modified for personal project
 
 ## Changes:
 
-*Added acceleration support with `setAccel(boolean value)`
+* Added acceleration support with `setAccel(boolean value)`
 Meaning that the faster the encoder is rotated the greater the step of increment/decrement will be and keeping in mind that the encoder must be able to step by 1 if rotated slowly enough. Threshold time between steps is 150ms
 
 
