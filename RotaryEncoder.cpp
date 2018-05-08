@@ -12,7 +12,7 @@
 #include "RotaryEncoder.h"
 
 
-// The array holds the values –1 for the entries where a position was decremented,
+// The array holds the values 1 for the entries where a position was decremented,
 // a 1 for the entries where the position was incremented
 // and 0 in all the other (no change or not valid) cases.
 
@@ -32,11 +32,11 @@ const int8_t KNOBDIR[] = {
 // ----- Initialization and Default Values -----
 
 RotaryEncoder::RotaryEncoder(int pin1, int pin2) {
-  
+
   // Remember Hardware Setup
   _pin1 = pin1;
   _pin2 = pin2;
-  
+
   // Setup the input pins
   pinMode(pin1, INPUT);
   digitalWrite(pin1, HIGH);   // turn on pullup resistor
@@ -50,7 +50,7 @@ RotaryEncoder::RotaryEncoder(int pin1, int pin2) {
   // start with position 0;
   _position = 0;
   _positionExt = 0;
-  
+
   accel=false;
 } // RotaryEncoder()
 
@@ -61,7 +61,7 @@ int  RotaryEncoder::getPosition() {
 
 void RotaryEncoder::setPosition(int newPosition) {
   // only adjust the external part of the position.
-  
+
   _position = ((newPosition<<2) | (_position & 0x03));
   _positionExt = newPosition;
 
@@ -75,9 +75,9 @@ void RotaryEncoder::tick(void)
 
   if (_oldState != thisState) {
     _position += KNOBDIR[thisState | (_oldState<<2)];
-    
+
     if (thisState == LATCHSTATE) {
-		
+
 	  if (accel) {
 		unsigned long actualTick = millis();
 		if (actualTick - prevTick < 150){
@@ -86,10 +86,10 @@ void RotaryEncoder::tick(void)
 		}
 		prevTick = actualTick;
 	  }
-	  
+
       _positionExt = _position >> 2;
 	}
-    
+
     _oldState = thisState;
   } // if
 } // tick()
