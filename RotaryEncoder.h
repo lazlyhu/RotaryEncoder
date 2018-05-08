@@ -31,7 +31,7 @@ public:
   void tick(void);
 
   // Switches acceleration mode (fast response)
-  void setAccel(unsigned int value);
+  void setAccel(unsigned int value1, int value2);
 
 private:
   int _pin1, _pin2; // Arduino pins used for the encoder.
@@ -39,6 +39,7 @@ private:
   int8_t _oldState;
 
   unsigned int accel;
+  int multipleter;
   unsigned long prevTick;
 
   int _position;     // Internal position (4 times _positionExt)

@@ -82,7 +82,7 @@ void RotaryEncoder::tick(void)
     		unsigned long actualTick = millis();
     		if (actualTick - prevTick < accel) {
     		  unsigned long increment = (accel/(actualTick-prevTick)-1)*KNOBDIR[thisState | (_oldState<<2)];
-    		  _position += increment;
+    		  _position += increment * multipleter;
     		}
     		prevTick = actualTick;
   	  }
@@ -95,8 +95,9 @@ void RotaryEncoder::tick(void)
 } // tick()
 
 
-void RotaryEncoder::setAccel(unsigned int value) {
+void RotaryEncoder::setAccel(unsigned int value1, int value2 = 1) {
 	prevTick = millis();
-	accel = value;
+  accel = value1;
+  multipleter = value2;
 }
 // End

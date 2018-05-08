@@ -5,8 +5,9 @@ Forked in 2015 and modified for personal project
 
 ## Changes:
 
-* Added acceleration support with `setAccel(unsigned int value)`
-Meaning that the faster the encoder is rotated the greater the step of increment/decrement will be and keeping in mind that the encoder must be able to step by 1 if rotated slowly enough. Threshold time between steps is the given value. For turn off set it to `0`
+* Added acceleration support with `setAccel(unsigned int timewindow, int multipleter)`
+Meaning that the faster the encoder is rotated the greater the step of increment/decrement will be and keeping in mind that the encoder must be able to step by 1 if rotated slowly enough. Threshold time between steps is the given value. For turn off set it to `0, 0`.
+Suggested initial values are `setAccel(200, 1)`.
 
 
 ## Credits
