@@ -1,4 +1,4 @@
-RotaryEncoder
+RotaryEncoderAccel
 =============
 
 Forked in 2015 and modified for personal project

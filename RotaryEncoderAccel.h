@@ -1,5 +1,5 @@
 // -----
-// RotaryEncoder.h - Library for using rotary encoders.
+// RotaryEncoderAccel.h - Library for using rotary encoders.
 // This class is implemented for use with the Arduino environment.
 // Copyright (c) by Matthias Hertel, http://www.mathertel.de
 // This work is licensed under a BSD style license. See http://www.mathertel.de/License.aspx
@@ -8,18 +8,18 @@
 // 18.01.2014 created by Matthias Hertel
 // -----
 
-#ifndef RotaryEncoder_h
-#define RotaryEncoder_h
+#ifndef RotaryEncoderAccel_h
+#define RotaryEncoderAccel_h
 
 #include "Arduino.h"
 
 #define LATCHSTATE 3
 
-class RotaryEncoder
+class RotaryEncoderAccel
 {
 public:
   // ----- Constructor -----
-  RotaryEncoder(int pin1, int pin2);
+  RotaryEncoderAccel(int pin1, int pin2);
 
   // retrieve the current position
   int  getPosition();

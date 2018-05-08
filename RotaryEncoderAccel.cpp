@@ -1,5 +1,5 @@
 // -----
-// RotaryEncoder.cpp - Library for using rotary encoders.
+// RotaryEncoderAccel.cpp - Library for using rotary encoders.
 // This class is implemented for use with the Arduino environment.
 // Copyright (c) by Matthias Hertel, http://www.mathertel.de
 // This work is licensed under a BSD style license. See http://www.mathertel.de/License.aspx
@@ -9,7 +9,7 @@
 // -----
 
 #include "Arduino.h"
-#include "RotaryEncoder.h"
+#include "RotaryEncoderAccel.h"
 
 
 // The array holds the values 1 for the entries where a position was decremented,
@@ -31,7 +31,7 @@ const int8_t KNOBDIR[] = {
 
 // ----- Initialization and Default Values -----
 
-RotaryEncoder::RotaryEncoder(int pin1, int pin2) {
+RotaryEncoderAccel::RotaryEncoderAccel(int pin1, int pin2) {
 
   // Remember Hardware Setup
   _pin1 = pin1;
@@ -52,14 +52,14 @@ RotaryEncoder::RotaryEncoder(int pin1, int pin2) {
   _positionExt = 0;
 
   accel=0;
-} // RotaryEncoder()
+} // RotaryEncoderAccel()
 
 
-int  RotaryEncoder::getPosition() {
+int  RotaryEncoderAccel::getPosition() {
   return _positionExt;
 }
 
-void RotaryEncoder::setPosition(int newPosition) {
+void RotaryEncoderAccel::setPosition(int newPosition) {
   // only adjust the external part of the position.
 
   _position = ((newPosition<<2) | (_position & 0x03));
@@ -67,7 +67,7 @@ void RotaryEncoder::setPosition(int newPosition) {
 
 }
 
-void RotaryEncoder::tick(void)
+void RotaryEncoderAccel::tick(void)
 {
   int sig1 = digitalRead(_pin1);
   int sig2 = digitalRead(_pin2);
@@ -95,7 +95,7 @@ void RotaryEncoder::tick(void)
 } // tick()
 
 
-void RotaryEncoder::setAccel(unsigned int value1, int value2 = 1) {
+void RotaryEncoderAccel::setAccel(unsigned int value1, int value2 = 1) {
 	prevTick = millis();
   accel = value1;
   multipleter = value2;

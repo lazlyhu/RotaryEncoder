@@ -1,5 +1,5 @@
 // -----
-// InterruptRotator.ino - Example for the RotaryEncoder library.
+// InterruptRotator.ino - Example for the RotaryEncoderAccel library.
 // This class is implemented for use with the Arduino environment.
 // Copyright (c) by Matthias Hertel, http://www.mathertel.de
 // This work is licensed under a BSD style license. See http://www.mathertel.de/License.aspx
@@ -15,15 +15,15 @@
 // Attach a rotary encoder with output pins to A2 and A3.
 // The common contact should be attached to ground.
 
-#include <RotaryEncoder.h>
+#include <RotaryEncoderAccel.h>
 
 // Setup a RoraryEncoder for pins A2 and A3:
-RotaryEncoder encoder(A2, A3);
+RotaryEncoderAccel encoder(A2, A3);
 
 void setup()
 {
   Serial.begin(57600);
-  Serial.println("SimplePollRotator example for the RotaryEncoder library.");
+  Serial.println("SimplePollRotator example for the RotaryEncoderAccel library.");
 
   // You may have to modify the next 2 lines if using other pins than A2 and A3
   PCICR |= (1 << PCIE1);    // This enables Pin Change Interrupt 1 that covers the Analog input pins or Port C.
