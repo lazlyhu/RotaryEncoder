@@ -51,7 +51,7 @@ RotaryEncoder::RotaryEncoder(int pin1, int pin2) {
   _position = 0;
   _positionExt = 0;
 
-  accel=false;
+  accel=0;
 } // RotaryEncoder()
 
 
@@ -78,24 +78,24 @@ void RotaryEncoder::tick(void)
 
     if (thisState == LATCHSTATE) {
 
-	  if (accel) {
-		unsigned long actualTick = millis();
-		if (actualTick - prevTick < 150){
-		  unsigned long increment = (150/(actualTick-prevTick)-1)*KNOBDIR[thisState | (_oldState<<2)];
-		  _position += increment;
-		}
-		prevTick = actualTick;
-	  }
+  	  if (accel > 0) {
+    		unsigned long actualTick = millis();
+    		if (actualTick - prevTick < accel) {
+    		  unsigned long increment = (accel/(actualTick-prevTick)-1)*KNOBDIR[thisState | (_oldState<<2)];
+    		  _position += increment;
+    		}
+    		prevTick = actualTick;
+  	  }
 
       _positionExt = _position >> 2;
-	}
+  	}
 
     _oldState = thisState;
   } // if
 } // tick()
 
 
-void RotaryEncoder::setAccel(boolean value){
+void RotaryEncoder::setAccel(unsigned int value) {
 	prevTick = millis();
 	accel = value;
 }
