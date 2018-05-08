@@ -13,7 +13,9 @@ Suggested initial values are `setAccel(200, 1)`.
 ## Credits
 
 Original library by [**mathertel**](https://github.com/mathertel)
+
 Idea implemented by [**Susensio**](https://github.com/Susensio)
+
 Make it as an independent library by [**lazlyhu**](https://github.com/lazlyhu)
 
 ## Original readme
